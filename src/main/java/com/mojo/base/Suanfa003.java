@@ -16,7 +16,7 @@ public class Suanfa003 {
         for (int curVal : array) {
             
             if (curVal >= max) {
-                second = max;//second赋值为之前的最大值
+                second = max;//second赋值为之前的最大值,一定要先更新second
                 max = curVal;//当前值大于max则把max更新为当前值
             } else if (curVal > second) {
                 second = curVal;//进入这里表示second<curVal<max
