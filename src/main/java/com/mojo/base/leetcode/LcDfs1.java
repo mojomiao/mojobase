@@ -3,16 +3,16 @@ package com.mojo.base.leetcode;
 public class LcDfs1 {
     
     
-     int m, n, k;
+    int m, n, k;
     
-     boolean[][] visited;
+    boolean[][] visited;
     
-    public int movingCount(int m, int n, int k){
+    public int movingCount(int m, int n, int k) {
         this.m = m;
         this.n = n;
         this.k = k;
         visited = new boolean[m][n];
-        return dfs(0,0);
+        return dfs(0, 0);
     }
     
     public int dfs(int i, int j) {
@@ -20,10 +20,11 @@ public class LcDfs1 {
             return 0;
         }
         visited[i][j] = true;
+        //dfs(i + 1, j)向下走,dfs(i, j + 1)向右走
         return 1 + dfs(i + 1, j) + dfs(i, j + 1);
     }
     
-    public int count(int i, int j) {
+    public int count(int i, int j) {//两个数求数位和
         int sum = 0;
         while (i != 0) {
             sum += i % 10;

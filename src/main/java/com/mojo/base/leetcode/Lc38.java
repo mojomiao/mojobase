@@ -9,35 +9,37 @@ public class Lc38 {
     public static void main(String[] args) {
         
         //System.out.println(addBinary("11", "1"));
-    
+        
         //int[] ints = maxSlidingWindow(new int[]{1, 3, -1, -3, 5, 3, 6, 7}, 3);
-    
-    
+        
+        
         System.out.println(bitSum(19));
-    
+        
     }
     
     public int movingCount(int m, int n, int k) {
         
         
-        
-        
-    
-    
-    
         return 1;
     }
-    
-    
+
+
 //    public static int dfs(int i, int j){
 //        if ()
 //    }
     
-    public static int bitSum(int n){
+    
+    /**
+     * 数位和方法
+     *
+     * @param n
+     * @return
+     */
+    public static int bitSum(int n) {
         int sum = 0;
-        while (n > 0){
-            sum = sum+ n%10;
-            n = n/10;
+        while (n > 0) {
+            sum = sum + n % 10;//取余数
+            n = n / 10;//消除一位数
         }
         return sum;
     }
@@ -45,13 +47,14 @@ public class Lc38 {
     
     /**
      * 滑动窗口的最大值
+     *
      * @param nums
      * @param k
      * @return
      */
     public static int[] maxSlidingWindow(int[] nums, int k) {
         
-        if (nums.length == 0){
+        if (nums.length == 0) {
             return new int[0];
         }
         
