@@ -16,7 +16,7 @@ public class LcDfs1 {
     }
     
     public int dfs(int i, int j) {
-        if (i >= m || j >= n || visited[i][j] || count(i, j) > k) {
+        if (i >= m || j >= n || visited[i][j] || numBitSum(i, j) > k) {
             return 0;
         }
         visited[i][j] = true;
@@ -24,7 +24,7 @@ public class LcDfs1 {
         return 1 + dfs(i + 1, j) + dfs(i, j + 1);
     }
     
-    public int count(int i, int j) {//两个数求数位和
+    public int numBitSum(int i, int j) {//两个数求数位和
         int sum = 0;
         while (i != 0) {
             sum += i % 10;
