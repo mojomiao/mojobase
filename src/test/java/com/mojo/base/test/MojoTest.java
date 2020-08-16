@@ -2,6 +2,7 @@ package com.mojo.base.test;
 
 import com.mojo.base.leetcode.Lc38;
 
+import com.mojo.base.leetcode.LcSolution11;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.condition.EnabledOnJre;
@@ -15,8 +16,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.stream.Stream;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 
 public class MojoTest {
@@ -58,5 +58,16 @@ public class MojoTest {
         public Stream<? extends Arguments> provideArguments(ExtensionContext context) {
             return Stream.of("apple", "banana").map(Arguments::of);
         }
+    }
+    
+    @DisplayName("Test Lc38")
+    @Test
+    @EnabledOnJre(JRE.JAVA_8)
+    public void testBinSearch() {
+        int[] array = new int[]{1,2,3};
+        boolean search = new LcSolution11().binSearch(array, -1);
+        assertFalse(search);
+//        boolean res2 = new LcSolution11().binSearch(array, 1);
+//        assertTrue(res2);
     }
 }

@@ -3,6 +3,27 @@ package com.mojo.base.leetcode;
 public class LcSolution11 {
     
     
+    public boolean binSearch(int[] array, int num) {
+        
+        int low = 0;
+        int high = array.length - 1;
+        
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+            if (num > array[mid]) {
+                low = mid + 1;
+            } else if (num < array[mid]) {
+                high = mid - 1;
+            } else {
+                return true;
+            }
+            
+            
+        }
+        return false;
+    }
+    
+    
     public int minArray(int[] numbers) {
         int low = 0;
         int high = numbers.length - 1;
@@ -36,6 +57,8 @@ public class LcSolution11 {
         for (int anInt : ints) {
             System.out.println(anInt);
         }
+        
+        System.err.println(1 / 2);
         //System.out.println();
     }
     
@@ -65,6 +88,11 @@ public class LcSolution11 {
         int index = 0;
         
         int left = 0, right = columns - 1, top = 0, bottom = rows - 1;
+        
+        //left左边列
+        //right右边列
+        //top顶部
+        //bottom底部
         
         while (left <= right && top <= bottom) {
             
