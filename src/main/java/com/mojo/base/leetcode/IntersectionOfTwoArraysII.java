@@ -26,9 +26,9 @@ public class IntersectionOfTwoArraysII {
             if (count > 0) {
                 res[index++] = num;
                 count--;
-                if (count>0){
+                if (count > 0) {
                     map.put(num, count);
-                }else {
+                } else {
                     map.remove(num);
                 }
             }
