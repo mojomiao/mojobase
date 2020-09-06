@@ -25,10 +25,10 @@ public class CreateLinkedList {
         t1.right = t4;
         t2.right = t5;
         t3.left = t6;
-    
+        
         ListNode[] listNodes = new CreateLinkedList().listOfDepth(root);
         System.out.println(listNodes);
-    
+        
     }
     
     public ListNode[] listOfDepth(TreeNode tree) {
@@ -41,26 +41,26 @@ public class CreateLinkedList {
         queue.offer(tree);
         List<ListNode> res = new ArrayList<>();
         ListNode dummy = new ListNode(0);
-    
+        
         
         while (!queue.isEmpty()) {
             int size = queue.size();//当前层的节点个数
             System.out.println(size);
             ListNode curr = dummy;
-            for (int i = 0; i < size; i++) {
+            for (int i = 0; i < size; i++) {//这里会把当前层的节点消费干净
                 TreeNode poll = queue.poll();
                 curr.next = new ListNode(poll.val);
                 if (poll.left != null) {
                     queue.offer(poll.left);
                 }
-    
+                
                 if (poll.right != null) {
                     queue.offer(poll.right);
                 }
-                curr = curr.next;
+                curr = curr.next;//当前节点的指针指向下一个节点
             }
             res.add(dummy.next);
-            dummy.next = null;
+            dummy.next = null;//每一轮(层)，初始化dummy节点
         }
         
         return res.toArray(new ListNode[]{});
