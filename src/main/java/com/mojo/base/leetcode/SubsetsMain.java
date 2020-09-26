@@ -6,7 +6,8 @@ import java.util.List;
 public class SubsetsMain {
     
     public static void main(String[] args) {
-        new SubsetsMain().subsets(new int[]{1});
+        List<List<Integer>> lists = new SubsetsMain().subsets2(new int[]{1, 2, 3});
+        System.out.println(lists);
     }
     
     public List<List<Integer>> subsets(int[] nums) {
