@@ -3,6 +3,10 @@ package com.mojo.base.leetcode;
 import java.util.Deque;
 import java.util.LinkedList;
 
+/**
+ * https://leetcode-cn.com/problems/max-area-of-island/solution/javaban-3chong-jie-fa-by-wang_dong/
+ * 695. 岛屿的最大面积
+ */
 public class MaxAreaOfIslandMain {
     
     public static void main(String[] args) {
