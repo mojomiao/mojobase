@@ -23,7 +23,7 @@ public class MaxAreaOfIslandMain {
         int res = 0;
         for (int i = 0; i < grid.length; i++) {
             for (int j = 0; j < grid[0].length; j++) {
-                if (grid[i][j] == 1) {
+                if (grid[i][j] == 1) {//针对每一个为1的格子进行dfs
                     int a = dfs(grid, i, j);
                     res = Math.max(res, a);
                 }
@@ -42,7 +42,7 @@ public class MaxAreaOfIslandMain {
         if (grid[row][col] != 1) {
             return 0;
         }
-        grid[row][col] = 2;
+        grid[row][col] = 2;//表示访问过了
         return 1 + dfs(grid, row - 1, col) +
                 dfs(grid, row + 1, col) +
                 dfs(grid, row, col - 1) +
