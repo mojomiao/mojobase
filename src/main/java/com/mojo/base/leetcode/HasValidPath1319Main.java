@@ -16,7 +16,7 @@ public class HasValidPath1319Main {
     private int[][] grid;
     
     private boolean[][] used;
-    
+    //假设当前单元格是1，那么可以往左走，也可以往右走，如果往左走的话，则只有(1, 4, 6)可以接的上去。右边与其他数字同理
     private boolean isLeftOk(int i, int j) {
         return j > 0 && (grid[i][j - 1] == 1 || grid[i][j - 1] == 4 || grid[i][j - 1] == 6);
     }
