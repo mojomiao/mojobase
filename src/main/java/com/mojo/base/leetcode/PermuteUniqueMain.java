@@ -13,8 +13,8 @@ public class PermuteUniqueMain {
         
         
         System.out.println('b' - 'a');
-    
-        System.out.println(second(new int[]{1,8,9,2,3,7}));
+        
+        System.out.println(second(new int[]{1, 8, 9, 2, 3, 7}));
     }
     
     public List<List<Integer>> permuteUnique(int[] nums) {
@@ -164,19 +164,81 @@ public class PermuteUniqueMain {
         return counter;
     }
     
-    public static int second(int[] array){
+    public static int second(int[] array) {
         int max = Integer.MIN_VALUE;
         int second = Integer.MIN_VALUE;
-    
+        
         for (int num : array) {
             
-            if (num > max){
+            if (num > max) {
                 second = max;
                 max = num;
-            }else if (num > second){
+            } else if (num > second) {
                 second = num;
             }
         }
         return second;
+    }
+    
+    /**
+     * 从二维数组的右上角开始查找。如果当前元素等于目标值，则返回 true。
+     * 如果当前元素大于目标值，则移到左边一列。如果当前元素小于目标值，则移到下边一行。
+     *
+     * @param matrix
+     * @param target
+     * @return
+     */
+    public boolean findNumberIn2DArray(int[][] matrix, int target) {
+        if (matrix == null || matrix.length == 0 || matrix[0].length == 0) {
+            return false;
+        }
+        
+        int rows = matrix.length, columns = matrix[0].length;
+        int row = 0, column = columns - 1;
+        
+        while (row < rows && column >= 0) {
+            int num = matrix[row][column];
+            if (num == target) {
+                return true;
+            } else if (num > target) {
+                column--;
+            } else {
+                row++;
+            }
+        }
+        return false;
+    }
+    
+    public boolean exist(char[][] board, String word) {
+        char[] words = word.toCharArray();
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board[0].length; j++) {
+                if (dfs(board, words, i, j, 0)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    
+    public boolean dfs(char[][] board, char[] word, int i, int j, int k) {
+        if (i >= board.length || i < 0 || j >= board[0].length || j < 0
+                || board[i][j] != word[k]) {
+            return false;
+        }
+        if (k == word.length - 1) {
+            return true;
+        }
+        
+        char temp = board[i][j];
+        board[i][j] = '/';
+        boolean res = dfs(board, word, i + 1, j, k + 1)
+                || dfs(board, word, i, j + 1, k + 1)
+                || dfs(board, word, i - 1, j, k + 1)
+                || dfs(board, word, i, j - 1, k + 1);
+        board[i][j] = temp;
+        return res;
+        
+        
     }
 }
