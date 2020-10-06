@@ -241,4 +241,83 @@ public class PermuteUniqueMain {
         
         
     }
+    
+    private int getNext(int n){
+        int total = 0;
+        while (n > 0){
+            int d = n % 10;
+            n = n / 10;
+            total += d *d;
+        }
+        return total;
+    }
+    
+    public boolean isHappy(int n){
+        Set<Integer> seen = new HashSet<>();
+        while (n != 1 && !seen.contains(n)){
+            seen.add(n);
+            n = getNext(n);
+        }
+        return n == 1;
+    }
+    
+    public static void preOrderND(MyTreeNode node){
+        
+        
+        Stack<MyTreeNode> stack = new Stack<>();
+        stack.push(node);
+        while (!stack.isEmpty()){
+            
+            MyTreeNode temp = stack.pop();
+    
+            System.out.println(temp.val);
+            if (temp.right != null){
+                stack.push(temp.right);
+            }
+            if (temp.left != null){
+                stack.push(temp.left);
+            }
+        }
+        
+    }
+    
+    public double myPow1(double x, long n) {
+        if(n == 0){
+            return 1.0;
+        }
+        if ((n & 1) == 1){
+            return x * myPow1(x, n -1);
+        }else{
+            double temp = myPow1(x, n/2);
+            return temp * temp;
+        }
+    }
+    
+    public double myPow(double x, int n) {
+        long N = n;
+        return N >= 0? myPow1(x, N):1.0/myPow1(x, -N);
+    }
+    
+    public int cnt = 0;
+    
+    public int search(int[] nums, int target){
+        helper(nums, target, 0, nums.length-1);
+        return cnt;
+    }
+    
+    public void helper(int[] nums, int target, int low, int high){
+        if (low <= high){
+            int mid = (high - low)/2+low;
+            if (nums[mid] == target){
+                cnt++;
+                helper(nums, target, low, mid-1);
+                helper(nums, target, mid+1, high);
+            }else if (nums[mid] > target){
+                helper(nums, target, low, mid-1);
+            }else {
+                helper(nums, target, mid+1, high);
+            }
+        }
+    }
+    
 }
